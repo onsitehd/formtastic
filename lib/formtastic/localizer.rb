@@ -115,7 +115,7 @@ module Formtastic
     protected
 
     def normalize_model_name(name)
-      if !name =~ /\[/ && builder.respond_to?(:parent_builder) && builder.parent_builder.object_name
+      if !(name =~ /\[/) && builder.respond_to?(:parent_builder) && builder.parent_builder.object_name
         # Rails 3.1 nested builder case
         [builder.parent_builder.object_name.to_s, name]
       elsif name =~ /(.+)\[(.+)\]/
